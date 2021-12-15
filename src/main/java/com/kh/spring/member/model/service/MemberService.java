@@ -27,6 +27,7 @@ public class MemberService {
 
 			if (memberDao.insertMember(member, conn) != 0) {
 				res = memberDao.insertMentee(mentee, conn);
+				
 			}
 
 			// 회원가입 이후 자동 로그인 처리

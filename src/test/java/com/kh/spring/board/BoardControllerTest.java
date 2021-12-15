@@ -14,7 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.kh.spring.member.Member;
+import com.kh.spring.member.model.dto.Member;
 
 import lombok.extern.slf4j.Slf4j;
 
