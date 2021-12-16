@@ -1,7 +1,8 @@
 package com.kh.spring.member.validator;
 
 
-import com.kh.spring.member.model.dto.Member;
+
+import com.kh.spring.member.Member;
 
 import lombok.Data;
 
