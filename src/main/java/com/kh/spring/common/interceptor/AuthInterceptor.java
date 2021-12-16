@@ -5,14 +5,8 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
-
-import com.kh.spring.common.code.ErrorCode;
-import com.kh.spring.common.code.member.MemberGrade;
-import com.kh.spring.common.exception.HandlableException;
-import com.kh.spring.member.Member;
 
 public class AuthInterceptor implements HandlerInterceptor {
 	
@@ -45,82 +39,17 @@ public class AuthInterceptor implements HandlerInterceptor {
 	}
 	
 	private void boardAuthorize(HttpServletRequest httpRequest, HttpServletResponse httpResponse, String[] uriArr) throws IOException, ServletException{
-		
-		HttpSession session = httpRequest.getSession();
-		Member member = (Member) session.getAttribute("authentication");
-		switch (uriArr[2]) {
-
-		case "board-form":
-
-			if (member == null) {
-				throw new HandlableException(ErrorCode.UNAUTHORIZED_PAGE);
-			}
-			break;
-		case "upload":
-			if(member == null){
-				throw new HandlableException(ErrorCode.UNAUTHORIZED_PAGE);
-
-			}
-		default:
-			break;
-		}
-		
+	
 	}
 
 	private void adminAuthorize(HttpServletRequest httpRequest, HttpServletResponse httpResponse, String[] uriArr)
 			throws IOException, ServletException {
-		Member member = (Member) httpRequest.getSession().getAttribute("authentication");
-
-		// 넘어온 인증정보가 관리지인지 사용자인지 판단
-		if (member == null || MemberGrade.valueOf(member.getGrade()).ROLE == "user") {
-			throw new HandlableException(ErrorCode.UNAUTHORIZED_PAGE);
-		}
-
-		MemberGrade adminGrade = MemberGrade.valueOf(member.getGrade());
-
-		if (adminGrade.DESC.equals("super"))
-			return;
-
-		switch (uriArr[2]) {
-
-		case "member":
-			// 회원과 관련된 관리를 수행하는 admin의 등급은 AD01
-			if (!adminGrade.DESC.equals("member")) {
-				throw new HandlableException(ErrorCode.UNAUTHORIZED_PAGE);
-			}
-
-			break;
-		case "board":
-			// 게시판과 관련된 관리를 수행하는 admin의 등급은 AD02
-			if (!adminGrade.DESC.equals("board")) {
-				throw new HandlableException(ErrorCode.UNAUTHORIZED_PAGE);
-			}
-			break;
-		default:
-
-			break;
-		}
+		
 	}
 
 
 	private void memberAuthorize(HttpServletRequest httpRequest, HttpServletResponse httpResponse, String[] uriArr)
 			throws IOException, ServletException {
-
-		boolean res = false;
-		switch (uriArr[2]) {
-		case "mypage":
-			if(httpRequest.getSession().getAttribute("authentication") == null){
-				throw new HandlableException(ErrorCode.AUTHENTICATION_FAILED_ERROR);
-			}
-		case "logout":
-			if(httpRequest.getSession().getAttribute("authentication") == null){
-				throw new HandlableException(ErrorCode.REDIRECT);
-			}
-		default:
-			break;
-		}
-
-
 
 	}
 
