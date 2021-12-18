@@ -1,5 +1,6 @@
 package com.kh.spring.member;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,8 +22,8 @@ public class Mentee {
 	@GeneratedValue
 	private Long menteeIdx;
 	
-	@OneToOne
-	@JoinColumn(columnDefinition = "userIdx")
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "userIdx")
 	private Member member;
 	private String schoolName;
 	private String major;

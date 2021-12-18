@@ -1,6 +1,6 @@
 package com.kh.spring.mentoring;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,6 +15,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import com.kh.spring.member.Member;
 import com.kh.spring.member.Mentor;
+import com.kh.spring.todo.Todo;
 
 import lombok.Data;
 
@@ -22,22 +23,33 @@ import lombok.Data;
 @Entity
 @DynamicInsert
 @DynamicUpdate
-public class ApplyHistory {
+public class MentorRating {
 
 	@Id
 	@GeneratedValue
-	private int applyIdx;
+	private Long ratingIdx;
+	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "userIdx")
 	private Member member;
-	
-	@Column(columnDefinition = "date default sysdate")
-	private Date applyDate;
-	@Column(columnDefinition = "date default sysdate")
-	private Date epDate;
 	@Column(columnDefinition = "number default 0")
-	private int reapplyCnt;
+	private Boolean kindness;
+	@Column(columnDefinition = "number default 0")
+	private Boolean communication;
+	@Column(columnDefinition = "number default 0")
+	private Boolean professional;
+	@Column(columnDefinition = "number default 0")
+	private Boolean processRate;
+	@Column(columnDefinition = "number default 0")
+	private Boolean appointment;
+	@Column(columnDefinition = "number default 0")
+	private Boolean explain;
+	private String rate_comment;
+	@Column(columnDefinition = "number default 0")
+	private Boolean isDel;
 	
-
-
+	
+	
+	
+	
 }

@@ -2,6 +2,7 @@ package com.kh.spring.board;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,8 +34,8 @@ public class Board {
 	@Column(columnDefinition = "number default 0")
 	private int recCount;
 	private String bdContent;
-	@ManyToOne
-	@JoinColumn(columnDefinition = "userId")
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "userIdx")
 	private Member member;
 	
 }

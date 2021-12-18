@@ -2,6 +2,7 @@ package com.kh.spring.mentoring;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,12 +26,10 @@ public class MentoringHistory {
 	@Id
 	@GeneratedValue
 	private int mentoringIdx;
-	@ManyToOne
-	@JoinColumn(columnDefinition = "userIdx")
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "userIdx")
 	private Member member;
-	@ManyToOne
-	@JoinColumn(columnDefinition = "mentorIdx")
-	private Mentor mentor;
+
 	private String state;
 	private LocalDate startDate;
 	private LocalDate endDate;

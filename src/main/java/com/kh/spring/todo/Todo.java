@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -24,14 +25,15 @@ public class Todo {
 	@Id
 	@GeneratedValue
 	private Long todoIdx;
-	@JoinColumn(columnDefinition = "userIdx")
+	@ManyToOne
+	@JoinColumn(name = "userIdx")
 	private Member member;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private String title;
 	@Column(columnDefinition = "number default 0")
-	private Boolean done;
-	private String color;
+	private Boolean isDone;
+	private String todoColor;
 	
 	
 }
