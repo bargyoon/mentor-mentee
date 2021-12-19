@@ -20,6 +20,7 @@ import lombok.Data;
 @DynamicUpdate
 public class FileInfo {
 
+	
 	@Id
 	@GeneratedValue
 	private Long flIdx;
