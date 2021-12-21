@@ -21,6 +21,7 @@ import lombok.Data;
 public class FileInfo {
 
 	
+	
 	@Id
 	@GeneratedValue
 	private Long flIdx;
