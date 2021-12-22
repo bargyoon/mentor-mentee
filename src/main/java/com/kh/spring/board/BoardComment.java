@@ -26,10 +26,10 @@ public class BoardComment {
 	@Id
 	@GeneratedValue
 	private Long coIdx;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name = "userIdx")
 	private Member member;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name = "bdIdx")
 	private Board board;
 	private String coContent;

@@ -22,7 +22,7 @@ public class Mentee {
 	@GeneratedValue
 	private Long menteeIdx;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne
 	@JoinColumn(name = "userIdx")
 	private Member member;
 	private String schoolName;

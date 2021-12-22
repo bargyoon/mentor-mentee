@@ -34,7 +34,7 @@ public class Board {
 	@Column(columnDefinition = "number default 0")
 	private int recCount;
 	private String bdContent;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name = "userIdx")
 	private Member member;
 	

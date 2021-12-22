@@ -22,7 +22,7 @@ public class Mentor {
 	@Id
 	@GeneratedValue
 	private Long mentorIdx;
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne
 	@JoinColumn(name="userIdx")
 	private Member member;
 	private String universityName;

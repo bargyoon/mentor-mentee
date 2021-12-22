@@ -29,7 +29,7 @@ public class MentorRating {
 	@GeneratedValue
 	private Long ratingIdx;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name = "userIdx")
 	private Member member;
 	@Column(columnDefinition = "number default 0")

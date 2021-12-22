@@ -26,7 +26,7 @@ public class MentoringHistory {
 	@Id
 	@GeneratedValue
 	private int mentoringIdx;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name = "userIdx")
 	private Member member;
 

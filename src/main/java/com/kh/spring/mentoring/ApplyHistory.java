@@ -27,7 +27,7 @@ public class ApplyHistory {
 	@Id
 	@GeneratedValue
 	private int applyIdx;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name = "userIdx")
 	private Member member;
 	
