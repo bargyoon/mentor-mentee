@@ -18,6 +18,7 @@ import lombok.Data;
 @DynamicUpdate
 public class Member {
 
+	
 	@Id
 	@GeneratedValue
 	private Long userIdx;
