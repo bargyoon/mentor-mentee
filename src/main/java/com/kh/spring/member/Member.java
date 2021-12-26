@@ -17,7 +17,6 @@ import lombok.Data;
 @DynamicInsert
 @DynamicUpdate
 public class Member {
-
 	
 	@Id
 	@GeneratedValue
